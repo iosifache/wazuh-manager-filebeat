@@ -1,0 +1,24 @@
+# Enable the Wazuh module for transforming logs into structured data
+filebeat.modules:
+  - module: wazuh
+    alerts:
+        enabled: true
+    archives:
+        enabled: false
+
+# Set up the ElasticSearch output for the generated alerts
+output.elasticsearch:
+  hosts:
+    - OPENSEARCH_URL:OPENSEARCH_PORT
+  protocol: OPENSEARCH_PROTOCOL
+  username: OPENSEARCH_USERNAME
+  password: OPENSEARCH_PASSWORD
+  ssl.verification_mode: none
+setup:
+  template.json:
+    enabled: true
+    path: '/etc/filebeat/wazuh-template.json'
+    name: 'wazuh'
+  ilm:
+    overwrite: true
+    enabled: false
