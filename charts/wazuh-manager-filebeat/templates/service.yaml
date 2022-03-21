@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wazuh-manager-filebeat-service
+  labels:
+    - wazuh-manager-filebeat
+spec:
+  type: NodePort
+  ports:
+    - port: 1514
+      targetPort: 1514
+      nodePort: 1514
+      protocol: TCP
+    - port: 1514
+      targetPort: 1514
+      nodePort: 1514
+      protocol: UDP
+    - port: 1515
+      targetPort: 1515
+      nodePort: 1515
+      protocol: TCP
+    - port: 1516
+      targetPort: 1516
+      nodePort: 1516
+      protocol: TCP
+    - port: 55000
+      targetPort: 55000
+      nodePort: 55000
+      protocol: TCP

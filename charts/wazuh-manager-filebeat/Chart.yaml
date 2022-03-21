@@ -1,0 +1,7 @@
+apiVersion: v2
+name: wazuh-manager-filebeat
+description: Helm chart for Wazuh Manager and Filebeat, configurable for sending alerts to a specific OpenSearch instance
+
+type: application
+version: 0.1.0-alpha
+appVersion: "0.1.0-alpha"

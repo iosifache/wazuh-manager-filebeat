@@ -1,0 +1,7 @@
+# Common VCS directories
+.git/
+.gitignore
+
+# Common backup files
+*.swp
+*.bak

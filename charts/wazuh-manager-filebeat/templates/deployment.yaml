@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wazuh-manager-filebeat-deployment
+  labels:
+    app: wazuh-manager-filebeat
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: wazuh-manager-filebeat
+    spec:
+      containers:
+      - name: wazuh-manager-filebeat
+        image: iosifache/wazuh-manager-filebeat:latest
+        ports:
+          - containerPort: 1514/tcp
+          - containerPort: 1514/udp
+          - containerPort: 1515/tcp
+          - containerPort: 1516/tcp
+          - containerPort: 55000/tcp
+        env:
+          - name: opensearch_url
+            value: {{ .Values.opensearch.url }}
+          - name: opensearch_port
+            value: {{ .Values.opensearch.port }}
+          - name: opensearch_protocol
+            value: {{ .Values.opensearch.protocol }}
+          - name: opensearch_username
+            value: {{ .Values.opensearch.username }}
+          - name: opensearch_password
+            value: {{ .Values.opensearch.password }}
