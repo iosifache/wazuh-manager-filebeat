@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  wazuh-manager-filebeat:
+  - apiVersion: v2
+    appVersion: 0.1.0-beta
+    created: "2022-03-22T05:41:36.55185387Z"
+    description: Helm chart for Wazuh Manager and Filebeat, configurable for sending alerts to a specific OpenSearch instance
+    digest: df96d3fceb528c710bdc2885032eb30049759d4568ddf1649f91d10407bb6255
+    name: wazuh-manager-filebeat
+    type: application
+    urls:
+    - https://github.com/iosifache/wazuh-manager-filebeat/releases/download/wazuh-manager-filebeat-0.1.0-beta/wazuh-manager-filebeat-0.1.0-beta.tgz
+    version: 0.1.0-beta
+generated: "2022-03-22T05:41:36.419657739Z"
