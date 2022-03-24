@@ -6,6 +6,9 @@ metadata:
     app: wazuh-manager-filebeat
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: wazuh-manager-filebeat
   template:
     metadata:
       labels:
