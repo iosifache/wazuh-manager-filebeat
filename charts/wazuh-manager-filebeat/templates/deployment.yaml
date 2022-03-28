@@ -18,19 +18,29 @@ spec:
       - name: wazuh-manager-filebeat
         image: iosifache/wazuh-manager-filebeat:latest
         ports:
-          - containerPort: 1514/tcp
-          - containerPort: 1514/udp
-          - containerPort: 1515/tcp
-          - containerPort: 1516/tcp
-          - containerPort: 55000/tcp
+          - containerPort: 1514
+            protocol: TCP
+            name: connection-tcp
+          - containerPort: 1514
+            protocol: UDP
+            name: connection-udp
+          - containerPort: 1515
+            protocol: TCP
+            name: registration
+          - containerPort: 1516
+            protocol: TCP
+            name: cluster-daemon
+          - containerPort: 55000
+            protocol: TCP
+            name: api
         env:
           - name: opensearch_url
-            value: {{ .Values.opensearch.url }}
+            value: {{ .Values.opensearch.url | quote }}
           - name: opensearch_port
             value: {{ .Values.opensearch.port }}
           - name: opensearch_protocol
-            value: {{ .Values.opensearch.protocol }}
+            value: {{ .Values.opensearch.protocol | quote }}
           - name: opensearch_username
-            value: {{ .Values.opensearch.username }}
+            value: {{ .Values.opensearch.username | quote }}
           - name: opensearch_password
-            value: {{ .Values.opensearch.password }}
+            value: {{ .Values.opensearch.password | quote }}

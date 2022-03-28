@@ -3,27 +3,34 @@ kind: Service
 metadata:
   name: wazuh-manager-filebeat-service
   labels:
-    - wazuh-manager-filebeat
+    app: wazuh-manager-filebeat
 spec:
   type: NodePort
+  selector:
+    app: wazuh-manager-filebeat
   ports:
     - port: 1514
       targetPort: 1514
-      nodePort: 1514
+      nodePort: 30000
       protocol: TCP
+      name: connection-tcp
     - port: 1514
       targetPort: 1514
-      nodePort: 1514
+      nodePort: 30001
       protocol: UDP
+      name: connection-udp
     - port: 1515
       targetPort: 1515
-      nodePort: 1515
+      nodePort: 30002
       protocol: TCP
+      name: registration
     - port: 1516
       targetPort: 1516
-      nodePort: 1516
+      nodePort: 30003
       protocol: TCP
+      name: cluster-daemon
     - port: 55000
       targetPort: 55000
-      nodePort: 55000
+      nodePort: 30004
       protocol: TCP
+      name: api
